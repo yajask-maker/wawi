@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechParts Store - Quality Computer Components</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F64VTGJ6TX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-F64VTGJ6TX');
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -23,6 +33,9 @@
             color: white;
             padding: 1rem 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav {
@@ -57,16 +70,19 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/></svg>');
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.95)),
+                        url('https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 20px;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
@@ -76,17 +92,19 @@
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 40px;
             background: white;
             color: #667eea;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .btn:hover {
             transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
         /* Categories Section */
@@ -115,12 +133,13 @@
             padding: 30px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
 
         .category-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .category-icon {
@@ -135,7 +154,7 @@
         }
 
         .products-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -148,7 +167,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
@@ -157,21 +176,29 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .product-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 250px;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: white;
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
         }
 
         .product-info {
@@ -181,6 +208,14 @@
         .product-info h3 {
             margin-bottom: 10px;
             color: #333;
+            font-size: 1.1rem;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            min-height: 40px;
         }
 
         .product-price {
@@ -190,15 +225,21 @@
             margin: 10px 0;
         }
 
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
         .add-to-cart {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: #667eea;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
+            font-weight: bold;
             transition: background 0.3s;
         }
 
@@ -208,7 +249,7 @@
 
         /* Newsletter Section */
         .newsletter {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
             padding: 60px 20px;
@@ -231,16 +272,22 @@
             padding: 12px;
             border: none;
             border-radius: 5px;
+            font-size: 1rem;
         }
 
         .newsletter-form button {
             padding: 12px 30px;
-            background: #764ba2;
-            color: white;
+            background: white;
+            color: #667eea;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
         }
 
         /* Footer */
@@ -262,6 +309,11 @@
         .footer-links a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
         }
 
         /* Cart Counter */
@@ -272,6 +324,30 @@
             padding: 2px 8px;
             font-size: 0.8rem;
             margin-left: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -307,6 +383,11 @@
                 <h3>Processors</h3>
                 <p>Intel & AMD CPUs</p>
             </div>
+            <div class="category-card" onclick="filterCategory('motherboards')">
+                <div class="category-icon">🔧</div>
+                <h3>Motherboards</h3>
+                <p>Intel & AMD Compatible</p>
+            </div>
             <div class="category-card" onclick="filterCategory('graphics')">
                 <div class="category-icon">🎮</div>
                 <h3>Graphics Cards</h3>
@@ -322,6 +403,21 @@
                 <h3>Storage</h3>
                 <p>SSDs & Hard Drives</p>
             </div>
+            <div class="category-card" onclick="filterCategory('power-supply')">
+                <div class="category-icon">⚡</div>
+                <h3>Power Supplies</h3>
+                <p>Modular & Non-Modular</p>
+            </div>
+            <div class="category-card" onclick="filterCategory('cases')">
+                <div class="category-icon">📦</div>
+                <h3>PC Cases</h3>
+                <p>ATX, Micro-ATX, Mini-ITX</p>
+            </div>
+            <div class="category-card" onclick="filterCategory('cooling')">
+                <div class="category-icon">❄️</div>
+                <h3>Cooling</h3>
+                <p>Air & Liquid Coolers</p>
+            </div>
         </div>
     </section>
 
@@ -330,58 +426,245 @@
         <div class="products-container">
             <h2>Featured Products</h2>
             <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">💻</div>
+                <!-- Processors -->
+                <div class="product-card" data-category="processors">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1555680202-c65f18eec72f?w=400&h=300&fit=crop" alt="Intel Core i9-14900K">
+                    </div>
                     <div class="product-info">
-                        <h3>Intel Core i9-13900K</h3>
-                        <p>24 Cores, 32 Threads, 5.8GHz Max</p>
+                        <h3>Intel Core i9-14900K</h3>
+                        <p>24 Cores, 32 Threads, 6.0GHz Max Turbo, LGA1700</p>
+                        <div class="product-rating">★★★★★ (4.8/5)</div>
                         <div class="product-price">$589.99</div>
-                        <button class="add-to-cart" onclick="addToCart('Intel i9-13900K', 589.99)">Add to Cart</button>
+                        <button class="add-to-cart" onclick="addToCart('Intel Core i9-14900K', 589.99)">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">🎮</div>
-                    <div class="product-info">
-                        <h3>NVIDIA RTX 4080</h3>
-                        <p>16GB GDDR6X, Ray Tracing</p>
-                        <div class="product-price">$1,199.99</div>
-                        <button class="add-to-cart" onclick="addToCart('RTX 4080', 1199.99)">Add to Cart</button>
+
+                <div class="product-card" data-category="processors">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&h=300&fit=crop" alt="AMD Ryzen 9 7950X">
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">🔲</div>
-                    <div class="product-info">
-                        <h3>Corsair Vengeance 32GB</h3>
-                        <p>DDR5 6000MHz, RGB</p>
-                        <div class="product-price">$149.99</div>
-                        <button class="add-to-cart" onclick="addToCart('Corsair RAM 32GB', 149.99)">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">💾</div>
-                    <div class="product-info">
-                        <h3>Samsung 980 PRO 2TB</h3>
-                        <p>NVMe SSD, 7000MB/s Read</p>
-                        <div class="product-price">$199.99</div>
-                        <button class="add-to-cart" onclick="addToCart('Samsung 980 PRO', 199.99)">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">💻</div>
                     <div class="product-info">
                         <h3>AMD Ryzen 9 7950X</h3>
-                        <p>16 Cores, 32 Threads, 5.7GHz</p>
+                        <p>16 Cores, 32 Threads, 5.7GHz Max Boost, AM5 Socket</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
                         <div class="product-price">$549.99</div>
-                        <button class="add-to-cart" onclick="addToCart('AMD Ryzen 9', 549.99)">Add to Cart</button>
+                        <button class="add-to-cart" onclick="addToCart('AMD Ryzen 9 7950X', 549.99)">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">⚡</div>
+
+                <div class="product-card" data-category="processors">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1555680202-c65f18eec72f?w=400&h=300&fit=crop" alt="Intel Core i5-14600K">
+                    </div>
                     <div class="product-info">
-                        <h3>EVGA 850W Gold PSU</h3>
-                        <p>Fully Modular, 80+ Gold</p>
-                        <div class="product-price">$129.99</div>
-                        <button class="add-to-cart" onclick="addToCart('EVGA PSU 850W', 129.99)">Add to Cart</button>
+                        <h3>Intel Core i5-14600K</h3>
+                        <p>14 Cores, 20 Threads, 5.3GHz Max Turbo, Great for Gaming</p>
+                        <div class="product-rating">★★★★☆ (4.7/5)</div>
+                        <div class="product-price">$319.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Intel Core i5-14600K', 319.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Graphics Cards -->
+                <div class="product-card" data-category="graphics">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=300&fit=crop" alt="NVIDIA RTX 4080">
+                    </div>
+                    <div class="product-info">
+                        <h3>NVIDIA GeForce RTX 4080</h3>
+                        <p>16GB GDDR6X, Ray Tracing, DLSS 3.0, 4K Gaming</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
+                        <div class="product-price">$1,199.99</div>
+                        <button class="add-to-cart" onclick="addToCart('NVIDIA RTX 4080', 1199.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="graphics">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=300&fit=crop" alt="AMD Radeon RX 7900 XTX">
+                    </div>
+                    <div class="product-info">
+                        <h3>AMD Radeon RX 7900 XTX</h3>
+                        <p>24GB GDDR6, RDNA 3, Ray Tracing, High Performance</p>
+                        <div class="product-rating">★★★★★ (4.8/5)</div>
+                        <div class="product-price">$999.99</div>
+                        <button class="add-to-cart" onclick="addToCart('AMD RX 7900 XTX', 999.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="graphics">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=300&fit=crop" alt="NVIDIA RTX 4070">
+                    </div>
+                    <div class="product-info">
+                        <h3>NVIDIA GeForce RTX 4070</h3>
+                        <p>12GB GDDR6X, Excellent 1440p Performance, Efficient</p>
+                        <div class="product-rating">★★★★★ (4.8/5)</div>
+                        <div class="product-price">$599.99</div>
+                        <button class="add-to-cart" onclick="addToCart('NVIDIA RTX 4070', 599.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Motherboards -->
+                <div class="product-card" data-category="motherboards">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop" alt="ASUS ROG Strix Z790">
+                    </div>
+                    <div class="product-info">
+                        <h3>ASUS ROG Strix Z790-E</h3>
+                        <p>ATX, LGA1700, DDR5, PCIe 5.0, WiFi 6E, RGB</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
+                        <div class="product-price">$449.99</div>
+                        <button class="add-to-cart" onclick="addToCart('ASUS ROG Strix Z790', 449.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="motherboards">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1563297007-0686b7003af7?w=400&h=300&fit=crop" alt="MSI MAG B650">
+                    </div>
+                    <div class="product-info">
+                        <h3>MSI MAG B650 Tomahawk WiFi</h3>
+                        <p>ATX, AM5, DDR5, PCIe 4.0, Great Value for Ryzen</p>
+                        <div class="product-rating">★★★★☆ (4.7/5)</div>
+                        <div class="product-price">$229.99</div>
+                        <button class="add-to-cart" onclick="addToCart('MSI B650 Tomahawk', 229.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- RAM -->
+                <div class="product-card" data-category="memory">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1541795795328-f073b763494e?w=400&h=300&fit=crop" alt="Corsair Vengeance DDR5">
+                    </div>
+                    <div class="product-info">
+                        <h3>Corsair Vengeance DDR5 32GB</h3>
+                        <p>2x16GB, 6000MHz, CL30, RGB, High Performance</p>
+                        <div class="product-rating">★★★★★ (4.8/5)</div>
+                        <div class="product-price">$149.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Corsair DDR5 32GB', 149.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="memory">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1562976540-1502c2145186?w=400&h=300&fit=crop" alt="G.Skill Trident Z5">
+                    </div>
+                    <div class="product-info">
+                        <h3>G.Skill Trident Z5 RGB 64GB</h3>
+                        <p>2x32GB, 6400MHz, CL32, Premium RGB, Enthusiast</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
+                        <div class="product-price">$279.99</div>
+                        <button class="add-to-cart" onclick="addToCart('G.Skill DDR5 64GB', 279.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Storage -->
+                <div class="product-card" data-category="storage">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=300&fit=crop" alt="Samsung 990 PRO">
+                    </div>
+                    <div class="product-info">
+                        <h3>Samsung 990 PRO 2TB</h3>
+                        <p>NVMe Gen4, 7450MB/s Read, 6900MB/s Write</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
+                        <div class="product-price">$199.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Samsung 990 PRO 2TB', 199.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="storage">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=400&h=300&fit=crop" alt="WD Black SN850X">
+                    </div>
+                    <div class="product-info">
+                        <h3>WD Black SN850X 1TB</h3>
+                        <p>NVMe Gen4, 7300MB/s Read, Gaming Optimized</p>
+                        <div class="product-rating">★★★★★ (4.8/5)</div>
+                        <div class="product-price">$119.99</div>
+                        <button class="add-to-cart" onclick="addToCart('WD Black SN850X 1TB', 119.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Power Supplies -->
+                <div class="product-card" data-category="power-supply">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="Corsair RM850x">
+                    </div>
+                    <div class="product-info">
+                        <h3>Corsair RM850x 850W</h3>
+                        <p>80+ Gold, Fully Modular, Quiet, 10 Year Warranty</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
+                        <div class="product-price">$149.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Corsair RM850x', 149.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-supply">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=400&h=300&fit=crop" alt="EVGA SuperNOVA">
+                    </div>
+                    <div class="product-info">
+                        <h3>EVGA SuperNOVA 1000 GT</h3>
+                        <p>1000W, 80+ Gold, Fully Modular, High Capacity</p>
+                        <div class="product-rating">★★★★☆ (4.7/5)</div>
+                        <div class="product-price">$179.99</div>
+                        <button class="add-to-cart" onclick="addToCart('EVGA SuperNOVA 1000W', 179.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- PC Cases -->
+                <div class="product-card" data-category="cases">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=300&fit=crop" alt="NZXT H7 Flow">
+                    </div>
+                    <div class="product-info">
+                        <h3>NZXT H7 Flow</h3>
+                        <p>Mid Tower, Excellent Airflow, Tempered Glass, Cable Management</p>
+                        <div class="product-rating">★★★★★ (4.8/5)</div>
+                        <div class="product-price">$139.99</div>
+                        <button class="add-to-cart" onclick="addToCart('NZXT H7 Flow', 139.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cases">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1600861194942-f883de0dfe96?w=400&h=300&fit=crop" alt="Lian Li O11 Dynamic">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lian Li O11 Dynamic EVO</h3>
+                        <p>Mid Tower, Dual Chamber, Premium Build Quality, Showcase Design</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
+                        <div class="product-price">$179.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lian Li O11 Dynamic', 179.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Cooling -->
+                <div class="product-card" data-category="cooling">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=300&fit=crop" alt="Noctua NH-D15">
+                    </div>
+                    <div class="product-info">
+                        <h3>Noctua NH-D15 chromax.black</h3>
+                        <p>Dual Tower Air Cooler, Ultra Quiet, Premium Performance</p>
+                        <div class="product-rating">★★★★★ (4.9/5)</div>
+                        <div class="product-price">$119.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Noctua NH-D15', 119.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cooling">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1624705012832-22b12e5f7e7a?w=400&h=300&fit=crop" alt="Corsair iCUE H150i">
+                    </div>
+                    <div class="product-info">
+                        <h3>Corsair iCUE H150i Elite LCD</h3>
+                        <p>360mm AIO, LCD Screen, RGB, Extreme Cooling</p>
+                        <div class="product-rating">★★★★★ (4.8/5)</div>
+                        <div class="product-price">$289.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Corsair H150i AIO', 289.99)">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -391,7 +674,7 @@
     <!-- Newsletter -->
     <section class="newsletter">
         <h2>Subscribe to Our Newsletter</h2>
-        <p>Get exclusive deals and latest tech news!</p>
+        <p>Get exclusive deals and latest tech news delivered to your inbox!</p>
         <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Subscribe</button>
@@ -403,32 +686,6 @@
         <div class="footer-links">
             <a href="#about">About Us</a>
             <a href="#shipping">Shipping Info</a>
-            <a href="#returns">Returns</a>
+            <a href="#returns">Returns & Refunds</a>
+            <a href="#warranty">Warranty</a>
             <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
-        </div>
-        <p>&copy; 2024 TechParts Store. All rights reserved.</p>
-    </footer>
-
-    <script>
-        let cartItems = 0;
-
-        function addToCart(productName, price) {
-            cartItems++;
-            document.getElementById('cartCount').textContent = cartItems;
-            alert(`Added ${productName} to cart! ($${price})`);
-        }
-
-        function filterCategory(category) {
-            alert(`Filtering products by: ${category}`);
-        }
-
-        function subscribeNewsletter(e) {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            alert(`Thank you for subscribing with: ${email}`);
-            e.target.reset();
-        }
-    </script>
-</body>
-</html>
